@@ -1,0 +1,21 @@
+{
+  "name": "projet-vins",
+  "version": "1.0.0",
+  "description": "Exercice 'Mes vins' du cours de WEB4 fourni par Gabriel",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon -L app.js"
+  },
+  "author": "Sebastien Fortier",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
+    "helmet": "^5.1.0",
+    "mariadb": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}

@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  api-vins:
+    container_name: "api-vins"
+    build: .
+    ports:
+      - "3000:80"
+    depends_on:
+      - db
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+
+  phpmyadmin-db-vins:
+    container_name: "phpmyadmin-db-vins"
+    image: phpmyadmin:5.1
+    ports:
+      - "8081:80"
+    environment:
+      PMA_host: db
+    depends_on:
+      - db
+
+  db:
+    container_name: "db-vins"
+    build: ./data
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: "root"
+      MARIADB_DATABASE: "vins-database"
+    volumes:
+      - "data:/var/lib/mysql"
+
+volumes:
+  data:
+
+
+
+
