@@ -11,6 +11,8 @@ const app = express()
 
 app.use(helmet({ contentSecurityPolicy: (process.env.NODE_ENV === 'production') }))
 
+app.use(express.static('public'))
+
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: root,
