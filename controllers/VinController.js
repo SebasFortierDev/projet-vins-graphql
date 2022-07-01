@@ -1,4 +1,8 @@
-const { getVin, createVin, updateVin, validateYear, validateGrade } = require("../models/Vin");
+const { getVins, getVin, createVin, updateVin, validateYear, validateGrade } = require("../models/Vin");
+
+module.exports.getVins = async () => {
+    return await getVins()
+}
 
 module.exports.getVin = async ({ id }) => {
     let vin = await getVin(id)

@@ -3,6 +3,12 @@ const { buildSchema } = require('graphql')
 let schema = buildSchema(`
     type Query {
         getVin(id: ID!): Vin
+        getVins: [Vin]
+    }
+    
+    type Mutation {
+        createVin(input: VinInput): Vin
+        updateVin(id: ID!, input: VinInput): Vin
     }
     
     type Vin {
@@ -12,11 +18,6 @@ let schema = buildSchema(`
         grade: Int!
     }
     
-    type Mutation {
-        createVin(input: VinInput): Vin
-        updateVin(id: ID!, input: VinInput): Vin
-    }
-
     input VinInput {
         name: String!
         year: Int!

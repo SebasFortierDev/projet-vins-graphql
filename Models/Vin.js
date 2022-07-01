@@ -9,6 +9,10 @@ class Vin {
     }
 }
 
+async function getVins() {
+    return await query('SELECT * FROM vins')
+}
+
 async function getVin(id) {
     const res = await query('SELECT * FROM vins WHERE id = ?', [id])
 
@@ -68,4 +72,4 @@ function validateGrade(grade) {
 }
 
 
-module.exports = {Vin, getVin, createVin, updateVin, validateYear, validateGrade}
+module.exports = {Vin, getVins, getVin, createVin, updateVin, validateYear, validateGrade}
