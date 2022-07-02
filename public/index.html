@@ -11,6 +11,19 @@
 <body>
 
     <h1>Liste des vins</h1>
+    <label for="vinName">Nom du vin</label>
+    <input type="text" id="vinName" name="vinName" required
+           minlength="1">
+
+    <label for="vinYear">Année du vin</label>
+    <input type="number" id="vinYear" name="vinYear" required
+           minlength="1">
+
+    <label for="vinGrade">Note du vin</label>
+    <input type="number" id="vinGrade" name="vinGrade" required
+           minlength="1">
+
+
     <button id="createVinButton">Ajouter un vin</button>
     <div id="vinContainer">
 

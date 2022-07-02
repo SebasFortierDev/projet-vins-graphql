@@ -1,5 +1,8 @@
 const vinContainer = document.getElementById("vinContainer");
 document.getElementById("createVinButton").addEventListener("click", createVin);
+const inputVinName = document.getElementById("vinName");
+const inputVinYear = document.getElementById("vinYear");
+const inputVinGrade = document.getElementById("vinGrade");
 
 const instanceAxios = axios.create({
     baseURL: "http://localhost:3000",
@@ -22,20 +25,22 @@ function getVins() {
 }
 
 function createVin() {
-    const vinName = "Salut!!"
+    const vinName = inputVinName.value
+    const vinYear = inputVinYear.value
+    const vinGrade = inputVinGrade.value
 
     instanceAxios.post('/graphql', {
-        query: `mutation CreateVin($vinName: String!) {
+        query: `mutation CreateVin($vinName: String!, $vinYear: Int!, $vinGrade: Int!) {
                     createVin(input: {
                         name: $vinName
-                        year: 1995
-                        grade: 5
+                        year: $vinYear
+                        grade: $vinGrade
                       }) {
                             id
                             name
                           }
                     }`,
-        variables: {vinName: vinName},
+        variables: {vinName: vinName, vinYear: parseInt(vinYear), vinGrade: parseInt(vinGrade)},
     }).then(response => {
         getVins(response)
     }).catch(error => console.log('error', error))
